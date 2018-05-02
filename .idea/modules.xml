@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Srping_MVC.iml" filepath="$PROJECT_DIR$/Srping_MVC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springMVC.iml" filepath="$PROJECT_DIR$/springMVC.iml" />
     </modules>
   </component>
 </project>

@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.spring.version</groupId>
-    <artifactId>springMVC</artifactId>
+    <artifactId>SpringMVC_CRUD</artifactId>
     <version>1.0-SNAPSHOT</version>
     <!--la forma de como lo va a desplegar el proyecto-->
     <packaging>war</packaging>
@@ -161,11 +161,12 @@
 
     </dependencies>
     <build>
-        <finalName>springMVC97</finalName>
+        <finalName>SpringMVC_CRUD</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
                 <configuration>
                     <source>1.6</source>
                     <target>1.6</target>
