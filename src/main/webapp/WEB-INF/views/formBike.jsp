@@ -21,38 +21,19 @@
 </head>
 <body>
 <div class="container">
-    <h4>Complete los datos <i class="material-icons prefix left">directions_bike</i> </h4>
     <div class="card-panel teal lighten-2">
+        <div align="center">
+            <h4>Complete los datos: <i class="material-icons prefix left">directions_bike</i> </h4>
+        </div>
           <div class="card-panel" id="first_name1">
              <div class="row">
-                <form:form action="saveData" method="post" modelAttribute="StoryData">
-                    <form:hidden path="id"/>
-                    <div class="row">
-                        <div class="input-field col s8">
-                            <label for="names">Name:</label>
-                            <form:input path="nameUser" type="text" class="validate"
-                                        id="names" name="names" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s8">
-                            <label for="dniOrPassport">DNI or Passport:</label>
-                            <form:input path="dniPassport" type="text" class="validate"
-                                        id="dniOrPassport" name="dniOrPassport" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s8">
-                            <label for="email">Email:</label>
-                            <form:input path="email" type="email" class="validate"
-                                        id="email"  name="email"/>
-                        </div>
-                    </div>
+                <form:form action="saveData" method="post" modelAttribute="orderData">
+                    <form:hidden path="idOrder"/>
                     <div class="row">
                         <div class="input-field col s8">
                             <label for="address">Address:</label>
                             <form:input path="address"  type="text" class="validate"
-                                        id="address"  name="address" />
+                                        id="address"  name="address" required="required" />
                         </div>
                     </div>
                     <div class="row">
@@ -65,7 +46,7 @@
                     <div class="row">
                         <div class="input-field col s6">
                             <label for="totalDay">Rental Day:</label>
-                            <form:input path="totalDay"  type="number" class="validate"
+                            <form:input path="totalDays"  type="number" class="validate"
                                         id="totalDay"  name="totalDay" />
                         </div>
                         <div class="input-field col s6">
@@ -80,11 +61,11 @@
                     <div class="row">
                         <div class="input-field col s8">
                             <label for="payTotal">Total De Pay:</label>
-                            <form:input path="totalCount" type="text" class="validate"
+                            <form:input path="totalPay" type="text" class="validate"
                                         id="payTotal" name="payTotal" />
                         </div>
                     </div>
-                    <input type="submit" class="waves-effect waves-light btn"> </input>
+                    <button type="submit" class="waves-effect waves-light btn" ><i class="material-icons">assignment_returned</i> Guardar </button>
                     <a href="backTo" class="waves-effect waves-light btn light-blue lighten-1">
                         <i class="material-icons left">cancel</i>Cancel
                     </a>
@@ -124,8 +105,9 @@
           document.getElementById("payTotal").value = countComplet;
 
        }else{
-           if(time.value > 24){
+           if(time > 24){
                alert("No puede ser mayor a 24 hrs!!!!!!");
+               document.getElementById("selectClock").value = "";
            }else{
                countComplet = countComplet + 25;
                document.getElementById("payTotal").value = countComplet;

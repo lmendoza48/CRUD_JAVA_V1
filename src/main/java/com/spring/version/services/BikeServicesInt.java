@@ -1,20 +1,22 @@
 package com.spring.version.services;
 
-import com.spring.version.model.StoryData;
-import org.springframework.stereotype.Service;
+import com.spring.version.model.OrderModel;
+import com.spring.version.model.UserData;
 
 import java.util.List;
 
 
 public interface BikeServicesInt {
 
-     void addBike(StoryData bikeData);
+     void addBike(OrderModel orderData);
 
-     List<StoryData> getAllEmployees();
+     OrderModel updateDataBike(OrderModel orderModel);
+
+     List<OrderModel> getOrderByUser(UserData userDataList);
 
      void deleteDataBike(Integer bikeId);
 
-     StoryData getDataByBike(int bikeId);
+     OrderModel getDataByBike(int bikeId);
 
-     StoryData updateDataBike(StoryData bikeData);
+
 }

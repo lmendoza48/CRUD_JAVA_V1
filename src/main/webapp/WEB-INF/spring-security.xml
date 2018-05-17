@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bean:beans xmlns:bean="http://www.springframework.org/schema/beans"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://www.springframework.org/schema/security"
+            xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+            http://www.springframework.org/schema/security
+            http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+    <http auto-config="true">
+        <intercept-url pattern="/hello" access="ROLE_Admin" />
+        <intercept-url pattern="/listData" access="ROLE_Admin" />
+        <intercept-url pattern="/" access="ROLE_Admin" />
+        <!-- access denied page -->
+        <access-denied-handler error-page="/denied" />
+        <form-login
+                login-page="/login"
+                default-target-url="/"
+                authentication-failure-url="/login?error"
+                username-parameter="username"
+                password-parameter="password"/>
+        <!-- enable csrf protection -->
+        <csrf />
+    </http>
+
+    <authentication-manager>
+        <authentication-provider user-service-ref="userDataServicesImpl">
+           <!-- <password-encoder hash="bcrypt" />-->
+        </authentication-provider>
+    </authentication-manager>
+
+    <bean:bean id="userDataServicesImpl" class="com.spring.version.services.implement.UserDataServicesImpl"/>
+    <!--<authentication-manager>
+        <authentication-provider>
+            <user-service>
+                <user name="manuel" password="1234" authorities="ROLE_Usuario" />
+            </user-service>
+        </authentication-provider>
+    </authentication-manager>-->
+</bean:beans>

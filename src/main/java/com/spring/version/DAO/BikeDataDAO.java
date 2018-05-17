@@ -1,20 +1,19 @@
 package com.spring.version.DAO;
 
-import com.spring.version.model.StoryData;
-import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
+import com.spring.version.model.OrderModel;
+import com.spring.version.model.UserData;
 
 import java.util.List;
 
 public interface BikeDataDAO {
 
-    void addBikeData(StoryData bike);
+    void addBikeData(OrderModel order);
 
-    List<StoryData> getAllEmployees();
+    OrderModel updateEmployee(OrderModel orderData);
+
+    List<OrderModel> getOrderByUser(UserData userDataList);
 
     void deleteDataByBike(Integer bikeId);
 
-    StoryData updateEmployee(StoryData bikeAll);
-
-    StoryData getEmployee(int bikeId);
+    OrderModel getEmployee(int bikeId);
 }

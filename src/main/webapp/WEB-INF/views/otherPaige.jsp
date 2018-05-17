@@ -28,11 +28,8 @@
       <table class="striped" align="center">
         <thead>
         <tr>
-          <th>UserName</th>
-          <th>DNI or Passport</th>
-          <th>Email</th>
+          <th>Addres</th>
           <th>Cantidad de Bicis</th>
-          <th>Adress</th>
           <th>Total dias de alquiler</th>
           <th>Pago Total</th>
         </tr>
@@ -42,18 +39,15 @@
             <c:when test="${listBike.size() > '0'}">
               <c:forEach items="${listBike}" var="listAllData">
               <tr>
-                <td>${listAllData.nameUser}</td>
-                <td>${listAllData.dniPassport}</td>
-                <td>${listAllData.email}</td>
-                <td>${listAllData.countBike}</td>
                 <td>${listAllData.address}</td>
-                <td>${listAllData.totalDay}</td>
-                <td>${listAllData.totalCount}$</td>
+                <td>${listAllData.countBike}</td>
+                <td>${listAllData.totalDays}</td>
+                <td>${listAllData.totalPay}</td>
                 <td>
-                  <a href="${listAllData.id}" class="btn-floating btn-medium waves-effect waves-light indigo lighten-3"><i class="material-icons">update</i></a>
+                  <a href="${listAllData.idOrder}" class="btn-floating btn-medium waves-effect waves-light indigo lighten-3"><i class="material-icons">update</i></a>
                 </td>
                 <td>
-                <a id="deleteElemet" onclick="getElementDelete(${listAllData.id})" class="btn-floating btn-medium waves-effect waves-light red"><i class="material-icons">delete</i></a>
+                <a id="deleteElemet" onclick="getElementDelete(${listAllData.idOrder})" class="btn-floating btn-medium waves-effect waves-light red"><i class="material-icons">delete</i></a>
                 </td>
               </tr>
               </c:forEach>

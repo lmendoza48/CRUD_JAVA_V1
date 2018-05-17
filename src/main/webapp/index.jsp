@@ -21,10 +21,13 @@
 <body>
 <div class="container">
   <div class="card-panel blue lighten-2">
-    <center>
-      <i class="material-icons prefix">directions_bike</i>
-      <h3>BICI-ECO PAGE</h3>
-    </center>
+    <div align="center">
+        <i class="material-icons prefix">directions_bike</i>
+        <h3>BICI-ECO PAGE</h3>
+        <div align="right">
+            <a href="user/logout" class="btn-floating btn-large waves-effect waves-light blue lighten-4"><i class="material-icons">directions_walk</i></a>
+        </div>
+    </div>
     <div class="card-panel">
         <h3 class="lime-text text-lighten-2">Homepage</h3>
         <a href="hello" class="btn waves-effect waves-teal"><i class="material-icons left">add</i> Ingresar </a>
