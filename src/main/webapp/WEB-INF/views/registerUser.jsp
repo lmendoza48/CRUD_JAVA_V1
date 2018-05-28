@@ -30,25 +30,25 @@
                 <form:input path="idUser" type="hidden"/>
                 <div class="row">
                     <div class="input-field col s10">
-                        <form:input path="name" type="text" id="name"  name="name" class="validate" />
+                        <form:input path="name" type="text" id="name"  name="name" class="validate" required="required" />
                         <label for="name">Name:</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s10">
-                        <form:input path="dni" id="dni" type="text" name="dni" class="validate" />
+                        <form:input path="dni" id="dni" type="text" name="dni" class="validate" required="required" />
                         <label for="dni">DNI or Passport:</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s10">
-                        <form:input path="email" id="username" type="email" name="username" class="validate" />
+                        <form:input path="email" id="username" type="email" name="username" class="validate" required="required" />
                         <label for="username">Email:</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s10">
-                        <form:input path="password" id="password" type="password" name="password" class="validate" />
+                        <form:input path="password" id="password" type="password" name="password" class="validate" required="required" />
                         <label for="username">Password:</label>
                     </div>
                 </div>

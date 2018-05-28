@@ -1,4 +1,7 @@
+<%@ page import="org.springframework.security.core.Authentication" %>
+<%@ page import="org.springframework.security.core.context.SecurityContextHolder" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: lamendoza
@@ -19,16 +22,21 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
 </head>
 <body>
+<%
+    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+%>
 <div class="container">
   <div class="card-panel blue lighten-2">
     <div align="center">
         <i class="material-icons prefix">directions_bike</i>
         <h3>BICI-ECO PAGE</h3>
-        <div align="right">
-            <a href="user/logout" class="btn-floating btn-large waves-effect waves-light blue lighten-4"><i class="material-icons">directions_walk</i></a>
-        </div>
     </div>
     <div class="card-panel">
+        <% if(!auth.getPrincipal().equals("anonymousUser")){%>
+            <div align="right">
+                <a href="user/logout" class="waves-effect waves-light btn blue lighten-4"><i class="material-icons">directions_walk</i></a>
+            </div>
+        <%}%>
         <h3 class="lime-text text-lighten-2">Homepage</h3>
         <a href="hello" class="btn waves-effect waves-teal"><i class="material-icons left">add</i> Ingresar </a>
         <a href="listData" class="btn waves-effect waves-teal lime darken-2"><i class="material-icons left">tablet</i> Ver Datos </a>

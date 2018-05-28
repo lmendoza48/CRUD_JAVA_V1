@@ -56,9 +56,7 @@
               <tr>
                 <td></td>
                 <td></td>
-                <td></td>
                 <td>No Hay datos que mostrar</td>
-                <td></td>
                 <td></td>
                 <td></td>
               </tr>
