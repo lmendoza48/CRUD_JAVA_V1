@@ -11,7 +11,7 @@
   Jsp principal cuando suba la app
   Version con Proyecto Nuevo
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <title>BICI-ECO PAGE</title>
