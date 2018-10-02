@@ -15,5 +15,5 @@ public interface BikeDataDAO {
 
     void deleteDataByBike(Integer bikeId);
 
-    OrderModel getEmployee(int bikeId);
+    OrderModel getDataByOrderOfBike(int bikeId);
 }

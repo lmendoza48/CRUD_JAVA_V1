@@ -15,7 +15,7 @@ import java.util.List;
  */
 @Service
 @Transactional
-public class BikeServicesImpl implements BikeServicesInt {
+public class BikeDataServicesImpl implements BikeServicesInt {
 
     @Autowired
     private BikeDataDAO allDatabike;
@@ -26,8 +26,8 @@ public class BikeServicesImpl implements BikeServicesInt {
     }
 
     @Transactional
-    public void deleteDataBike(Integer bikeId) {
-        allDatabike.deleteDataByBike(bikeId);
+    public void deleteDataByBike(Integer orderId) {
+        allDatabike.deleteDataByBike(orderId);
     }
 
 
@@ -35,12 +35,23 @@ public class BikeServicesImpl implements BikeServicesInt {
         return allDatabike.updateEmployee(orderModel);
     }
 
+    /**
+     * get data Order by bikeId
+     * @param orderId
+     * @return Order for Update
+     */
     @Transactional(readOnly = true)
-    public OrderModel getDataByBike(int bikeId) {
-        return allDatabike.getEmployee(bikeId);
+    public OrderModel getDataByOrderBike(int orderId) {
+        return allDatabike.getDataByOrderOfBike(orderId);
     }
+
+    /**
+     * All data by User...
+     * @param userLogin
+     * @return ordenes del usuario logueado
+     */
     @Transactional(readOnly = true)
-    public List<OrderModel> getOrderByUser(UserData userDataList) {
-        return allDatabike.getOrderByUser(userDataList);
+    public List<OrderModel> getOrderByUser(UserData userLogin) {
+        return allDatabike.getOrderByUser(userLogin);
     }
 }

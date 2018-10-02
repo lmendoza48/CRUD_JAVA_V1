@@ -44,7 +44,7 @@ public class BikeDataDAOImpl implements BikeDataDAO {
      */
     public void deleteDataByBike(Integer bikeId) {
         try {
-            OrderModel bikeByID = getEmployee(bikeId);
+            OrderModel bikeByID = getDataByOrderOfBike(bikeId);
             if (bikeByID != null){
                 this.sessionFactory.getCurrentSession().delete(bikeByID);
             }
@@ -66,11 +66,12 @@ public class BikeDataDAOImpl implements BikeDataDAO {
     }
 
     /**
-     * metodo que optiene por id los datos NOTA: el metodo no puede ser Override
+     * metodo que obtiene por id los datos de una orden del usuario
+     * NOTA: el metodo no puede ser Override
      * @param bikeId
      * @return
      */
-    public OrderModel getEmployee(int bikeId) {
+    public OrderModel getDataByOrderOfBike(int bikeId) {
         return (OrderModel) sessionFactory.getCurrentSession().get(OrderModel.class,bikeId);
     }
 

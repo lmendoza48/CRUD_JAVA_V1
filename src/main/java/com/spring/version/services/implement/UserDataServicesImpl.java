@@ -31,14 +31,15 @@ public class UserDataServicesImpl implements UserDataServicesInt, UserDetailsSer
         userDataDAOint.saveUser(userData);
     }
 
-    @Transactional
-    public void deleteUser(Long Idlogin) {
-        userDataDAOint.deleteUser(Idlogin);
-    }
-
     public UserData getUserDataByIdUser(String IdUser) {
         return userDataDAOint.getUserDataByIdUser(IdUser);
     }
+
+    @Override
+    public UserData getUserByEmail(String email) {
+        return userDataDAOint.getUserDataByUsername(email);
+    }
+
 
     /**
      * Method for get User by Spring Security
@@ -49,11 +50,14 @@ public class UserDataServicesImpl implements UserDataServicesInt, UserDetailsSer
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
+        if( username.isEmpty() ) {
+            throw new UsernameNotFoundException("Please ingrese el username el campo no puede estar vacio");
+        }
+
         UserData userdataLogin = userDataDAOint.getUserDataByUsername(username);
 
-        if(userdataLogin == null){
-            System.out.println("User not found");
-            throw new UsernameNotFoundException("Username not found");
+        if( userdataLogin == null ) {
+            throw new UsernameNotFoundException("Usuario no existe");
         }
         List<GrantedAuthority> authorities = buildUserAuthority(userdataLogin.getRolUser());
 
@@ -62,6 +66,11 @@ public class UserDataServicesImpl implements UserDataServicesInt, UserDetailsSer
 
     }
 
+    /**
+     * metodo para conseguir los roles que estan permitido en el sistema
+     * @param userRoles
+     * @return
+     */
     private List<GrantedAuthority> buildUserAuthority(String userRoles) {
 
         Set<GrantedAuthority> setAuths = new HashSet<GrantedAuthority>();
@@ -73,9 +82,7 @@ public class UserDataServicesImpl implements UserDataServicesInt, UserDetailsSer
             setAuths.add(new SimpleGrantedAuthority(userRole.getRolUser()));
         }*/
 
-        List<GrantedAuthority> Result = new ArrayList<GrantedAuthority>(setAuths);
-
-        return Result;
+        return new ArrayList<GrantedAuthority>(setAuths);
     }
 
 }

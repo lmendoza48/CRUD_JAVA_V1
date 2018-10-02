@@ -31,7 +31,7 @@ public class UserDataControllers {
     private UserDataServicesInt userDataServicesInt;
 
     /**
-     * metodo para cargar los datos
+     * metodo para cargar los datos en mi JSP
      * @param model
      * @return
      * @throws IOException
@@ -43,17 +43,26 @@ public class UserDataControllers {
         return model;
     }
 
+    /**
+     * Metodo para guardar un Usuario Nuevo
+     * @param userData model data of the User
+     * @return
+     */
     @RequestMapping(value = "/saveUser", method = RequestMethod.POST)
     public ModelAndView saveUser(@ModelAttribute("userData") UserData userData){
-        if (userData.getIdUser() == 0) { // if employee id is 0 then creating the
-            // employee other updating the employee
+        ModelAndView model = new ModelAndView();
+        UserData  dataUser = userDataServicesInt.getUserByEmail(userData.getEmail());
+        if (dataUser.getEmail().isEmpty()) {
             userData.setStatus("Active");
             userData.setRolUser("ROLE_Admin");
             userDataServicesInt.saveUser(userData);
+            model.setViewName("redirect:/");
         } else {
-            //bikeServicesInt.updateDataBike(ordelData);
+            model.addObject("error","true");
+            model.setViewName("redirect:/user/formInfo");
         }
-        return new ModelAndView("redirect:/");
+
+        return model;
     }
 
     @RequestMapping(value="/logout", method = RequestMethod.GET)

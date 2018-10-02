@@ -36,8 +36,4 @@ public class UserDataDAOImpl implements UserDataDAOint {
             e.getMessage();
         }
     }
-
-    public void deleteUser(Long userData) {
-        //here code for delete or inactive user
-    }
 }

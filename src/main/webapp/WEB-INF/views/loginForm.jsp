@@ -46,7 +46,6 @@
             </div>
             <input type="hidden" value="ID_Role">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-            <a href="user/formInfo" class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>Registrar</a>
             <button type="submit" class="waves-effect waves-light btn" > Login </button>
         </form>
      </div>

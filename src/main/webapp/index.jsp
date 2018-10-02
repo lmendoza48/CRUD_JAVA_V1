@@ -39,7 +39,7 @@
         <%}%>
         <h3 class="lime-text text-lighten-2">Homepage</h3>
         <a href="hello" class="btn waves-effect waves-teal"><i class="material-icons left">add</i> Ingresar </a>
-        <a href="listData" class="btn waves-effect waves-teal lime darken-2"><i class="material-icons left">tablet</i> Ver Datos </a>
+        <a href="user/formInfo" class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>Registrar</a>
     </div>
   </div>
 </div>

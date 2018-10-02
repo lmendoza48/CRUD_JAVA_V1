@@ -51,7 +51,8 @@ public class BikeDataController {
     }
 
     /**
-     * metodo para cargar los datos
+     * metodo para cargar los datos que se muestran
+     * en lista
      * @param model
      * @return
      * @throws IOException
@@ -84,7 +85,8 @@ public class BikeDataController {
     }
 
     /**
-     * metodo para guardar los datos y para actualizar los mismos
+     * metodo para guardar los datos de la ordern
+     * y para actualizar los mismos.
      * @param ordelData
      * @return
      */
@@ -100,7 +102,7 @@ public class BikeDataController {
             ordelData.setUserData(userdate);
             bikeServicesInt.updateDataBike(ordelData);
         }
-        return new ModelAndView("redirect:/");
+        return new ModelAndView("redirect:/listData");
     }
 
     /**
@@ -111,7 +113,7 @@ public class BikeDataController {
     @RequestMapping(value = "/deleteUser", method = RequestMethod.GET)
     public ModelAndView deleteEmployee(HttpServletRequest request) {
         int userId = Integer.parseInt(request.getParameter("id"));
-        bikeServicesInt.deleteDataBike(userId);
+        bikeServicesInt.deleteDataByBike(userId);
         return new ModelAndView("redirect:/listData");
     }
 
@@ -124,7 +126,7 @@ public class BikeDataController {
         ModelAndView model = new ModelAndView("formBike");
         try{
             int bikeByID = Id;
-            OrderModel orderData = bikeServicesInt.getDataByBike(bikeByID);
+            OrderModel orderData = bikeServicesInt.getDataByOrderBike(bikeByID);
             model.addObject("orderData", orderData);
         }catch (Exception e){
            logg.info("Error get User:" + e.getMessage());
@@ -138,10 +140,8 @@ public class BikeDataController {
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView loginPage(HttpServletRequest request){
         ModelAndView model = new ModelAndView();
-            if (request.getParameter("error") != null){
-                if (request.getParameter("error").isEmpty()){
+            if (request.getParameter("error") != null && request.getParameter("error").isEmpty()){
                     model.addObject("error","true");
-                }
             }
             model.setViewName("loginForm");
         return model;

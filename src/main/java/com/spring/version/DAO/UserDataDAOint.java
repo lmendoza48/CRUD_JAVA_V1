@@ -8,5 +8,4 @@ public interface UserDataDAOint {
     UserData getUserDataByUsername(String userData);
     UserData getUserDataByIdUser(String idUser);
     void saveUser(UserData userData);
-    void deleteUser(Long userData);
 }

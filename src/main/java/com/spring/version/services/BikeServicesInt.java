@@ -14,9 +14,9 @@ public interface BikeServicesInt {
 
      List<OrderModel> getOrderByUser(UserData userDataList);
 
-     void deleteDataBike(Integer bikeId);
+     void deleteDataByBike(Integer orderId);
 
-     OrderModel getDataByBike(int bikeId);
+     OrderModel getDataByOrderBike(int orderId);
 
 
 }

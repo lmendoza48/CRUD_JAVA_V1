@@ -52,8 +52,9 @@
                         <div class="input-field col s6">
                             <select id="selectClock" onchange="getDatabytotalAccount()">
                                 <option value="" disabled selected>Choose Days or Hours</option>
-                                <option value="days" >Days</option>
-                                <option value="hours" >Hours</option>
+                                <option value="days" >Días</option>
+                                <option value="hours" >Horas</option>
+                                <option value="weeks" >Semanas</option>
                             </select>
                             <label>Select Type</label>
                         </div>
@@ -69,6 +70,7 @@
                     <a href="backTo" class="waves-effect waves-light btn light-blue lighten-1">
                         <i class="material-icons left">cancel</i>Cancel
                     </a>
+                    <a href="listData" class="waves-effect waves-light btn"><i class="material-icons left">tablet</i> Ver Datos </a>
                 </form:form>
             </div>
         </div>
@@ -86,35 +88,52 @@
        var dayOrHrs = document.getElementById("selectClock").value;
        var time = document.getElementById("totalDay").value;
        var numberBike = document.getElementById("countBike").value;
-       var countComplet = numberBike*50;
-       var porcentage = 0;
+       //var countComplet = numberBike*50;
+        var porcentage = 0;
+        var ptotalPay = 0;
+        var ptotalPay2 = 0;
 
        if(dayOrHrs == "days"){
-           var totalDay = time*25;
-          if(time == 5){
-              porcentage = totalDay*0.05;
-              totalDay = totalDay - porcentage;
-          }else if(time == 10 ){
-              porcentage = totalDay*0.15;
-              totalDay = totalDay - porcentage;
-          }else if (time == 15 ){
-              porcentage = totalDay*0.20;
-              totalDay = totalDay - porcentage;
+          if(time > 7){
+              alert("No puede ser mayor a 7 dias!!!!!!");
+              document.getElementById("selectClock").value = "";
+          }else{
+              countComplet = gettotalCountData(20,numberBike,time);
           }
-          countComplet = totalDay + countComplet;
           document.getElementById("payTotal").value = countComplet;
 
-       }else{
+       }else if(dayOrHrs == "hours"){
            if(time > 24){
                alert("No puede ser mayor a 24 hrs!!!!!!");
                document.getElementById("selectClock").value = "";
            }else{
-               countComplet = countComplet + 25;
+               countComplet = gettotalCountData(5,numberBike, time);
                document.getElementById("payTotal").value = countComplet;
+           }
+       }else{
+           if(time > 4){
+               alert("No puede ser mayor a 4 semanas!!!!!!");
+               document.getElementById("selectClock").value = "";
+           }else{
+               countComplet = gettotalCountData(60,numberBike,time);
            }
        }
 
    }
+
+    function gettotalCountData(day, numberBike,time){
+        var ptotalPay = 0;
+        var ptotalPay2 = 0;
+        var countCompletData = 0;
+            if(numberBike >= 3 && numberBike <= 5){
+                ptotalPay = time*day;
+                ptotalPay2 = ptotalPay*0.30;
+                countCompletData = ptotalPay + ptotalPay2;
+            }else {
+                countCompletData = time * day;
+            }
+            return countCompletData;
+    }
 </script>
 </body>
 </html>
